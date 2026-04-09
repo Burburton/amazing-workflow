@@ -77,7 +77,49 @@ cp openspec/templates/runstate.template.md openspec/changes/005-new-feature/runs
 
 ---
 
-## 4. 脚本执行方式
+## 4. 快捷执行方式
+
+### 4.1 npm scripts（推荐）
+
+在项目根目录创建 `package.json` 后，可使用：
+
+```bash
+# 创建 feature
+npm run feature:start -- 005-new-feature "新功能"
+
+# 查询状态
+npm run feature:status
+
+# 归档 feature
+npm run feature:archive -- 005-new-feature
+
+# 帮助
+npm run feature:help
+```
+
+### 4.2 Shell 别名
+
+在 shell 中加载别名：
+
+```bash
+# 一次性加载
+source .superpowers/aliases.sh
+
+# 或添加到 ~/.bashrc / ~/.zshrc
+echo 'source /path/to/amazing-workflow/.superpowers/aliases.sh' >> ~/.bashrc
+```
+
+加载后可直接使用：
+
+```bash
+feature-start 005-new-feature "新功能"
+feature-status
+feature-archive 005-new-feature
+```
+
+---
+
+## 5. 脚本执行方式（详细）
 
 ### 4.1 前提条件
 

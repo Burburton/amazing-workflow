@@ -1,0 +1,13 @@
+{
+  "name": "amazing-workflow",
+  "version": "0.1.0",
+  "description": "OpenSpec + Superpowers 项目治理框架",
+  "scripts": {
+    "feature:start": "bash .superpowers/scripts/feature-start.sh",
+    "feature:archive": "bash .superpowers/scripts/feature-archive.sh",
+    "feature:status": "bash .superpowers/scripts/feature-status.sh",
+    "feature:help": "echo 'Usage: npm run feature:<command> -- [args]' && echo '' && echo 'Commands:' && echo '  start <id> \"<title>\"  - Create new feature' && echo '  archive <id>          - Archive feature' && echo '  status                - Show feature status'"
+  },
+  "keywords": ["openspec", "superpowers", "workflow", "governance"],
+  "license": "MIT"
+}
