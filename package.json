@@ -1,7 +1,0 @@
-{
-  "name": "amazing-workflow-skills",
-  "version": "1.0.0",
-  "type": "module",
-  "main": ".opencode/plugins/amazing-workflow-skills.js",
-  "description": "Feature lifecycle skills for Amazing Workflow governance framework"
-}
