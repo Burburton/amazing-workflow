@@ -157,6 +157,14 @@ NNN-semantic-name
 ## 8. 模板位置
 
 所有模板存放在 `openspec/templates/`:
-- `proposal.template.md`
-- `tasks.template.md`
-- `runstate.template.md`
+
+### 核心模板（第一阶段）
+- `proposal.template.md` - feature 提案
+- `tasks.template.md` - 任务清单
+- `runstate.template.md` - 运行状态
+
+### 扩展模板（第二阶段）
+- `design.template.md` - 设计文档
+- `implementation-summary.template.md` - 实现总结
+- `test-summary.template.md` - 测试总结
+- `lessons-learned.template.md` - 经验教训
