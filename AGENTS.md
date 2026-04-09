@@ -39,7 +39,8 @@ amazing-workflow/
 └─ .superpowers/
    ├─ context/            # 执行规则
    ├─ checklists/         # 检查清单
-   └─ skills/             # skill 命令定义
+   ├─ skills/             # skill 命令定义
+   └─ scripts/            # skill 执行脚本
 ```
 
 ---
@@ -112,3 +113,58 @@ idea → proposed → specified → planned → implementing → verifying → c
 ```
 使用 /feature-archive 命令，确保 feature 已 completed
 ```
+
+---
+
+## 8. 如何执行 Skill
+
+### 问题说明
+
+OpenCode 的 `skill` 工具目前只支持内置 skill，无法直接调用项目自定义的 `/feature-start`、`/feature-archive` 等命令。
+
+### 解决方案
+
+**方式一：手动执行**
+
+1. 读取对应的 SKILL.md 文件：
+   ```
+   .superpowers/skills/<skill-name>/SKILL.md
+   ```
+
+2. 按照文档中的"执行步骤"逐步操作
+
+3. 完成后更新 runstate.md
+
+**方式二：脚本执行**
+
+| 脚本 | 用途 |
+|------|------|
+| `.superpowers/scripts/feature-start.sh` | 创建新 feature |
+| `.superpowers/scripts/feature-archive.sh` | 归档 feature |
+| `.superpowers/scripts/feature-status.sh` | 查询状态 |
+
+示例：
+```bash
+# 创建新 feature
+./.superpowers/scripts/feature-start.sh 005-new-feature "新功能"
+
+# 查询状态
+./.superpowers/scripts/feature-status.sh
+
+# 归档 feature
+./.superpowers/scripts/feature-archive.sh 005-new-feature
+```
+
+**详细指南**：参见 `docs/guides/skill-execution-guide.md`
+
+### 各阶段执行建议
+
+| 阶段 | 推荐方式 | 说明 |
+|------|----------|------|
+| feature-start | 脚本 | 快速创建目录和文件 |
+| feature-spec | 手动 | 需根据 proposal 内容定制 |
+| feature-tasks | 手动 | 需根据 spec 内容定制 |
+| feature-implement | 手动 | 需加载输入包并执行任务 |
+| feature-verify | 手动 | 需生成验证报告 |
+| feature-close | 手动 | 需生成总结和更新知识层 |
+| feature-archive | 脚本 | 快速移动目录 |

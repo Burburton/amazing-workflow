@@ -22,6 +22,7 @@
 | 001-governance-foundation | 治理骨架 | archived | 2026-04-09 | 建立项目治理框架 |
 | 002-workflow-dogfooding | 工作流自验证 | archived | 2026-04-10 | 验证治理框架闭环可用性 |
 | 003-feature-hardening | 治理加固 | archived | 2026-04-10 | 创建知识分类文件，明确状态文件关系 |
+| 004-skill-execution | Skill 执行方案 | archived | 2026-04-10 | 创建执行指南和脚本，解决 skill 调用问题 |
 
 ---
 
