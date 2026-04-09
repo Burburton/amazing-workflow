@@ -4,16 +4,30 @@
 
 ---
 
+## 知识文件导航
+
+| 文件 | 用途 | 内容 |
+|------|------|------|
+| [knowledge-index.md](./knowledge-index.md) | 知识索引 | 本文件，摘要和导航 |
+| [reusable-patterns.md](./reusable-patterns.md) | 可复用模式 | 验证过的实践模式 |
+| [common-failures.md](./common-failures.md) | 常见问题 | 典型问题及解决方案 |
+| [decision-history.md](./decision-history.md) | 决策历史 | 重要决策及其理由 |
+
+---
+
 ## Feature 索引
 
 | Feature ID | 名称 | 状态 | 完成日期 | 主要贡献 |
 |------------|------|------|----------|----------|
 | 001-governance-foundation | 治理骨架 | archived | 2026-04-09 | 建立项目治理框架 |
 | 002-workflow-dogfooding | 工作流自验证 | archived | 2026-04-10 | 验证治理框架闭环可用性 |
+| 003-feature-hardening | 治理加固 | archived | 2026-04-10 | 创建知识分类文件，明确状态文件关系 |
 
 ---
 
 ## 可复用模式
+
+> 详细内容见 [reusable-patterns.md](./reusable-patterns.md)
 
 ### 模式 1: Feature 生命周期管理
 
@@ -70,6 +84,8 @@
 
 ## 常见问题
 
+> 详细内容见 [common-failures.md](./common-failures.md)
+
 ### 问题 1: AI 会话中断后如何恢复？
 
 **解决方案**:
@@ -116,11 +132,14 @@ docs/knowledge/ 目录下 reusable-patterns.md, common-failures.md, decision-his
 
 ## 决策历史
 
+> 详细内容见 [decision-history.md](./decision-history.md)
+
 | 日期 | 决策 | 原因 |
 |------|------|------|
 | 2026-04-09 | 采用精简版目录结构 | 第一阶段最小可用原则 |
 | 2026-04-10 | Dogfooding 验证为主、修复为次 | 避免 feature 范围失控，产出问题清单 |
 | 2026-04-10 | 不创建缺失知识文件 | 遵循验证原则，留给下一 feature |
+| 2026-04-10 | 渐进式修复问题 | 分阶段降低风险 |
 
 ---
 
@@ -130,3 +149,4 @@ docs/knowledge/ 目录下 reusable-patterns.md, common-failures.md, decision-his
 |------|---------|----------|
 | 2026-04-09 | 001-governance-foundation | 初始化知识索引 |
 | 2026-04-10 | 002-workflow-dogfooding | 添加 2 个可复用模式、2 个常见问题、2 条决策记录 |
+| 2026-04-10 | 003-feature-hardening | 创建知识分类文件，添加状态文件关系规范 |

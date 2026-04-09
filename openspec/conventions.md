@@ -168,3 +168,69 @@ NNN-semantic-name
 - `implementation-summary.template.md` - 实现总结
 - `test-summary.template.md` - 测试总结
 - `lessons-learned.template.md` - 经验教训
+
+---
+
+## 9. 状态文件关系
+
+### tasks.md 与 runstate.md 的职责
+
+| 文件 | 职责 | 粒度 | 更新频率 |
+|------|------|------|----------|
+| tasks.md | 任务拆解和执行状态 | 单个任务 | 任务完成时 |
+| runstate.md | feature 整体阶段和续接信息 | 整体阶段 | 阶段变更时 |
+
+### 具体分工
+
+**tasks.md 负责**:
+- 任务列表和依赖关系
+- 每个任务的详细状态（pending/in_progress/completed）
+- 任务级别的输入、输出、验证
+
+**runstate.md 负责**:
+- feature 的当前阶段（proposed/specified/planned/implementing/verifying/completed/archived）
+- 整体进度概览（已完成/进行中/待处理任务列表）
+- 阻塞点和下一步动作
+- 会话续接所需的关键信息
+
+### 同步规则
+
+1. **tasks.md 更新时** → runstate.md 的"已完成/进行中/待处理"字段应同步更新
+2. **阶段变更时** → runstate.md 必须更新"当前阶段"字段
+3. **遇到阻塞时** → 只在 runstate.md 记录，tasks.md 保持任务状态不变
+
+### 示例
+
+**tasks.md 中的任务状态**:
+```markdown
+### Task 1: 创建目录
+
+- **状态**: completed
+
+### Task 2: 编写 proposal
+
+- **状态**: in_progress
+
+### Task 3: 编写 spec
+
+- **状态**: pending
+```
+
+**runstate.md 中的整体状态**:
+```markdown
+| 字段 | 值 |
+|------|-----|
+| 当前阶段 | specified |
+| 已完成 | Task 1 |
+| 进行中 | Task 2 |
+| 待处理 | Task 3-8 |
+| 阻塞点 | 无 |
+| 下一步动作 | 完成 Task 2 后进入 planned 阶段 |
+```
+
+### 为什么需要两个文件
+
+1. **tasks.md 是静态规划** - 定义"要做什么"
+2. **runstate.md 是动态状态** - 记录"做到哪了"
+3. **分离关注点** - 规划和状态追踪分开，便于维护
+4. **支持续接** - runstate.md 提供会话恢复入口，tasks.md 提供执行细节
