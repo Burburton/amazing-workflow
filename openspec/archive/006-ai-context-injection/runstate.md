@@ -5,7 +5,7 @@
 - **Feature ID**: 006-ai-context-injection
 - **更新日期**: 2026-04-11
 - **更新者**: AI (Sisyphus)
-- **当前阶段**: completed
+- **当前阶段**: archived
 
 ---
 
@@ -13,12 +13,12 @@
 
 | 字段 | 值 |
 |------|-----|
-| 当前阶段 | completed |
+| 当前阶段 | archived |
 | 已完成 | Task 1-5, implementation-summary.md, lessons-learned.md, test-summary.md |
 | 进行中 | - |
-| 待处理 | 归档 |
+| 待处理 | - |
 | 阻塞点 | - |
-| 下一步动作 | 归档 feature |
+| 下一步动作 | - |
 
 ---
 
@@ -42,6 +42,7 @@
 | 2026-04-11 | implementing → completed | Task 1-5 完成，知识已更新 |
 | 2026-04-11 | completed → verifying | test-summary.md 验证完成 |
 | 2026-04-11 | verifying → completed | 验证通过，待归档 |
+| 2026-04-11 | completed → archived | 移动到 openspec/archive/，归档完成 |
 
 ---
 

@@ -26,6 +26,7 @@
 | 003-feature-hardening | 治理加固 | archived | 2026-04-10 | 创建知识分类文件，明确状态文件关系 |
 | 004-skill-execution | Skill 执行方案 | archived | 2026-04-10 | 创建执行指南和脚本，解决 skill 调用问题 |
 | 005-template-refinement | 模板改进 | archived | 2026-04-11 | 改进 tasks/runstate 模板，创建 spec 模板，添加状态同步规则和填写指南 |
+| 006-ai-context-injection | AI 入口优化 | archived | 2026-04-11 | 创建 CLAUDE.md、GEMINI.md，优化 AGENTS.md，创建平台适配指南 |
 
 ---
 
