@@ -23,6 +23,7 @@
 | 002-workflow-dogfooding | 工作流自验证 | archived | 2026-04-10 | 验证治理框架闭环可用性 |
 | 003-feature-hardening | 治理加固 | archived | 2026-04-10 | 创建知识分类文件，明确状态文件关系 |
 | 004-skill-execution | Skill 执行方案 | archived | 2026-04-10 | 创建执行指南和脚本，解决 skill 调用问题 |
+| 005-template-refinement | 模板改进 | archived | 2026-04-11 | 改进 tasks/runstate 模板，创建 spec 模板，添加状态同步规则和填写指南 |
 
 ---
 
@@ -72,14 +73,33 @@
 
 ### 模式 4: 文档拆分模式
 
-**来源**: 002-workflow-dogfooding
+---
+
+### 模式 5: 模板内嵌规则模式
+
+**来源**: 005-template-refinement
 
 **模式描述**:
-当输入文档过于完整，不直接复制，而是拆分到模板结构：背景目标 → proposal.md，需求验收 → spec.md，任务拆解 → tasks.md。
+将关键填写规则（如状态同步）直接嵌入模板文件顶部，而非分散在单独的规范文档中。好处：AI/用户读取模板时自动获取规则，减少查找成本。
 
 **适用场景**:
-- 输入文档超出单个模板容量
-- 需验证模板是否够用
+- 模板有复杂填写规则
+- 规则需要与模板结构同步更新
+- 新用户/AI 需要快速上手
+
+---
+
+### 模式 6: 向后兼容验证模式
+
+**来源**: 005-template-refinement
+
+**模式描述**:
+修改模板或规范时，必须验证现有格式仍然有效。核心原则：新增而非删除字段；不强制变更现有格式；用已归档 feature 进行兼容性测试。
+
+**适用场景**:
+- 修改核心模板或规范
+- 项目有已完成的 feature
+- 需确保不破坏现有工作流
 
 ---
 
@@ -141,6 +161,7 @@ docs/knowledge/ 目录下 reusable-patterns.md, common-failures.md, decision-his
 | 2026-04-10 | Dogfooding 验证为主、修复为次 | 避免 feature 范围失控，产出问题清单 |
 | 2026-04-10 | 不创建缺失知识文件 | 遵循验证原则，留给下一 feature |
 | 2026-04-10 | 渐进式修复问题 | 分阶段降低风险 |
+| 2026-04-11 | 状态同步规则嵌入模板 | AI 读取模板时自动获取规则，减少查找成本 |
 
 ---
 
@@ -151,3 +172,4 @@ docs/knowledge/ 目录下 reusable-patterns.md, common-failures.md, decision-his
 | 2026-04-09 | 001-governance-foundation | 初始化知识索引 |
 | 2026-04-10 | 002-workflow-dogfooding | 添加 2 个可复用模式、2 个常见问题、2 条决策记录 |
 | 2026-04-10 | 003-feature-hardening | 创建知识分类文件，添加状态文件关系规范 |
+| 2026-04-11 | 005-template-refinement | 添加 2 个可复用模式、1 条决策记录 |
