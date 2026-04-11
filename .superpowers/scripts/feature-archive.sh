@@ -160,61 +160,48 @@ echo -e "${GREEN}[Step 6] 更新 runstate.md...${NC}"
 RUNSTATE_FILE="${ARCHIVE_DIR}/runstate.md"
 
 if [ -f "$RUNSTATE_FILE" ]; then
-    # 跨平台兼容：检测 sed 版本
-    if sed --version 2>/dev/null | grep -q "GNU"; then
-        # GNU sed (Linux)
-        SED_CMD="sed -i"
-    else
-        # BSD sed (macOS)
-        SED_CMD="sed -i ''"
-    fi
-    
-    # 更新元信息中的"当前阶段"
-    $SED_CMD "s/- \*\*当前阶段\*\*: .*/- **当前阶段**: archived/" "$RUNSTATE_FILE" 2>/dev/null || \
-    sed -i '' "s/- \*\*当前阶段\*\*: .*/- **当前阶段**: archived/" "$RUNSTATE_FILE"
-    
-    # 更新状态表格中的"当前阶段"
-    # 使用 awk 更可靠
-    awk -v stage="archived" '
-    /^## 当前状态/ { in_status=1; print; next }
-    in_status && /^\| 当前阶段/ { 
-        gsub(/|[^|]*|$/, "| " stage " |")
-        print
-        in_status=0
+    awk -v stage="archived" -v date="$DATE" -v id="$FEATURE_ID" '
+    /^- \*\*当前阶段\*\*: / {
+        print "- **当前阶段**: " stage
         next
     }
-    { print }
-    ' "$RUNSTATE_FILE" > "${RUNSTATE_FILE}.tmp" && mv "${RUNSTATE_FILE}.tmp" "$RUNSTATE_FILE"
-    
-    # 更新状态表格中的"待处理"和"下一步动作"
-    awk '
-    /^## 当前状态/ { in_status=1; print; next }
-    in_status && /^\| 待处理/ { 
-        gsub(/|[^|]*|$/, "| - |")
-        print
+    /^\| 当前阶段 \|/ {
+        print "| 当前阶段 | " stage " |"
         next
     }
-    in_status && /^\| 下一步动作/ { 
-        gsub(/|[^|]*|$/, "| - |")
-        print
-        in_status=0
+    /^\| 待处理 \|/ {
+        print "| 待处理 | - |"
         next
     }
-    { print }
-    ' "$RUNSTATE_FILE" > "${RUNSTATE_FILE}.tmp" && mv "${RUNSTATE_FILE}.tmp" "$RUNSTATE_FILE"
-    
-    # 添加变更历史记录
-    awk -v date="$DATE" -v id="$FEATURE_ID" '
-    /^## 变更历史/ { in_history=1; print; next }
-    in_history && /^## [^变]/ { 
-        # 在下一个章节前添加新记录
+    /^\| 下一步动作 \|/ {
+        print "| 下一步动作 | - |"
+        next
+    }
+    /^## 变更历史/ {
+        in_history=1
+        print
+        print ""
+        print "| 日期 | 阶段变更 | 备注 |"
+        print "|------|----------|------|"
+        next
+    }
+    in_history && /^\| [0-9]{4}-[0-9]{2}-[0-9]{2} \|/ {
+        history_lines[++n] = $0
+        next
+    }
+    in_history && /^## / && !/^## 变更历史/ {
+        for (i=1; i<=n; i++) print history_lines[i]
         print "| " date " | completed → archived | 移动到 openspec/archive/" id "/ |"
         in_history=0
+        n=0
+        print ""
+        print $0
+        next
     }
-    in_history && /^\| [0-9]{4}-[0-9]{2}-[0-9]{2}/ { last=$0; print; next }
     { print }
-    END { 
-        if (in_history && last) {
+    END {
+        if (in_history && n>0) {
+            for (i=1; i<=n; i++) print history_lines[i]
             print "| " date " | completed → archived | 移动到 openspec/archive/" id "/ |"
         }
     }
@@ -233,31 +220,62 @@ echo -e "${GREEN}[Step 7] 更新 knowledge-index.md...${NC}"
 KNOWLEDGE_INDEX="docs/knowledge/knowledge-index.md"
 
 if [ -f "$KNOWLEDGE_INDEX" ]; then
-    # 在 Feature 索引表格添加新行
-    # 格式: | {feature-id} | {name} | archived | {date} | {主要贡献} |
-    
-    # 找到最后一个 archived feature 行的位置
     awk -v id="$FEATURE_ID" -v title="$FEATURE_TITLE" -v date="$DATE" -v contribution="$FEATURE_CONTRIBUTION" '
-    /^## Feature 索引/ { in_index=1; print; next }
-    in_index && /^## [^F]/ { 
-        # 在下一个章节前插入新行
+    /^## Feature 索引/ { 
+        in_feature=1
+        print
+        print ""
+        print "| Feature ID | 名称 | 状态 | 完成日期 | 主要贡献 |"
+        print "|------------|------|------|----------|----------|"
+        next
+    }
+    in_feature && /^\| 00[0-9]-/ {
+        feature_lines[++fn] = $0
+        next
+    }
+    in_feature && /^## / && !/^## Feature 索引/ {
+        for (i=1; i<=fn; i++) print feature_lines[i]
         print "| " id " | " title " | archived | " date " | " contribution " |"
-        in_index=0
+        in_feature=0
+        fn=0
+        print ""
+        print "---"
+        print ""
+        print $0
+        next
     }
-    in_index && /^\| 00[0-9]-/ { print }
-    /^---$/ && !in_index { print }
-    { print }
-    ' "$KNOWLEDGE_INDEX" > "${KNOWLEDGE_INDEX}.tmp" && mv "${KNOWLEDGE_INDEX}.tmp" "$KNOWLEDGE_INDEX"
-    
-    # 同时更新更新记录表格
-    awk -v date="$DATE" -v id="$FEATURE_ID" '
-    /^## 更新记录/ { in_update=1; print; next }
-    in_update && /^## [^更]/ { 
-        print "| " date " | " id " | 归档完成，状态更新为 archived |"
+    /^## 更新记录/ {
+        in_update=1
+        print
+        print ""
+        print "| 日期 | Feature | 更新内容 |"
+        print "|------|---------|----------|"
+        next
+    }
+    in_update && /^\| [0-9]{4}-[0-9]{2}-[0-9]{2}/ {
+        update_lines[++un] = $0
+        next
+    }
+    in_update && /^## / && !/^## 更新记录/ {
+        for (i=1; i<=un; i++) print update_lines[i]
+        print "| " date " | " id " | 归档完成 |"
         in_update=0
+        un=0
+        print ""
+        print $0
+        next
     }
-    in_update && /^\| [0-9]{4}-[0-9]{2}-[0-9]{2}/ { print }
     { print }
+    END {
+        if (in_feature && fn>0) {
+            for (i=1; i<=fn; i++) print feature_lines[i]
+            print "| " id " | " title " | archived | " date " | " contribution " |"
+        }
+        if (in_update && un>0) {
+            for (i=1; i<=un; i++) print update_lines[i]
+            print "| " date " | " id " | 归档完成 |"
+        }
+    }
     ' "$KNOWLEDGE_INDEX" > "${KNOWLEDGE_INDEX}.tmp" && mv "${KNOWLEDGE_INDEX}.tmp" "$KNOWLEDGE_INDEX"
     
     echo -e "${GREEN}✓ knowledge-index.md 更新成功${NC}"
