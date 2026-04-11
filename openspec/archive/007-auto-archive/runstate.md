@@ -7,7 +7,7 @@
 - **Feature ID**: 007-auto-archive
 - **更新日期**: 2026-04-11
 - **更新者**: AI (Sisyphus)
-- **当前阶段**: completed
+- **当前阶段**: archived
 
 ---
 
@@ -42,12 +42,12 @@
 
 | 字段 | 值 |
 |------|-----|
-| 当前阶段 | completed |
+| archived ||| archived ||| archived ||| archived |
 | 已完成 | Task 1-5 (脚本增强完成) |
 | 进行中 | - |
-| 待处理 | Task 6 (使用脚本归档 007) |
+| - ||| - ||| - ||| - |
 | 阻塞点 | - |
-| 下一步动作 | 验证脚本并使用脚本归档 007 |
+| - ||| - ||| - ||| - |
 
 ---
 
@@ -88,6 +88,7 @@
 
 ---
 
+| 2026-04-11 | completed → archived | 移动到 openspec/archive/007-auto-archive/ |
 ## 最后验证时间
 
 <!-- 记录上次验证的时间戳 -->

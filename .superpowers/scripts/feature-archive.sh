@@ -82,12 +82,10 @@ if [ ! -f "$RUNSTATE_FILE" ]; then
     exit 1
 fi
 
-# 提取当前阶段（支持两种格式）
-CURRENT_STAGE=$(grep -E "当前阶段.*:" "$RUNSTATE_FILE" | head -1 | sed 's/当前阶段.*: //' | sed 's/|.*//' | tr -d ' ' || echo "")
+CURRENT_STAGE=$(awk '/- \*\*当前阶段\*\*:/{gsub(/- \*\*当前阶段\*\*: /,""); gsub(/^[ \t]+|[ \t]+$/,""); print; exit}' "$RUNSTATE_FILE")
 
 if [ -z "$CURRENT_STAGE" ]; then
-    # 尝试另一种格式：表格中的"当前阶段"
-    CURRENT_STAGE=$(grep -A5 "## 当前状态" "$RUNSTATE_FILE" | grep "当前阶段" | sed 's/|/ /g' | awk '{print $NF}' | tr -d ' ' || echo "")
+    CURRENT_STAGE=$(awk '/^\| 当前阶段/{gsub(/^\| 当前阶段 \| /,""); gsub(/ \|$/,""); gsub(/^[ \t]+|[ \t]+$/,""); print; exit}' "$RUNSTATE_FILE")
 fi
 
 echo "当前阶段: ${CURRENT_STAGE}"

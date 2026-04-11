@@ -3,6 +3,7 @@
 项目知识沉淀索引。每个 feature 完成后更新此文件。
 
 ---
+---
 
 ## 知识文件导航
 
@@ -16,20 +17,28 @@
 | [ai-platform-adaptation.md](../guides/ai-platform-adaptation.md) | AI 平台适配指南 | 不同平台加载方式 |
 
 ---
+---
 
 ## Feature 索引
 
 | Feature ID | 名称 | 状态 | 完成日期 | 主要贡献 |
 |------------|------|------|----------|----------|
 | 001-governance-foundation | 治理骨架 | archived | 2026-04-09 | 建立项目治理框架 |
+| 001-governance-foundation | 治理骨架 | archived | 2026-04-09 | 建立项目治理框架 |
+| 002-workflow-dogfooding | 工作流自验证 | archived | 2026-04-10 | 验证治理框架闭环可用性 |
 | 002-workflow-dogfooding | 工作流自验证 | archived | 2026-04-10 | 验证治理框架闭环可用性 |
 | 003-feature-hardening | 治理加固 | archived | 2026-04-10 | 创建知识分类文件，明确状态文件关系 |
+| 003-feature-hardening | 治理加固 | archived | 2026-04-10 | 创建知识分类文件，明确状态文件关系 |
+| 004-skill-execution | Skill 执行方案 | archived | 2026-04-10 | 创建执行指南和脚本，解决 skill 调用问题 |
 | 004-skill-execution | Skill 执行方案 | archived | 2026-04-10 | 创建执行指南和脚本，解决 skill 调用问题 |
 | 005-template-refinement | 模板改进 | archived | 2026-04-11 | 改进 tasks/runstate 模板，创建 spec 模板，添加状态同步规则和填写指南 |
+| 005-template-refinement | 模板改进 | archived | 2026-04-11 | 改进 tasks/runstate 模板，创建 spec 模板，添加状态同步规则和填写指南 |
+| 006-ai-context-injection | AI 入口优化 | archived | 2026-04-11 | 创建 CLAUDE.md、GEMINI.md，优化 AGENTS.md，创建平台适配指南 |
 | 006-ai-context-injection | AI 入口优化 | archived | 2026-04-11 | 创建 CLAUDE.md、GEMINI.md，优化 AGENTS.md，创建平台适配指南 |
 
 ---
 
+| 007-auto-archive | # Feature Proposal | archived | 2026-04-11 | 目标 1: 创建自动化归档脚本，一键执行所有归档步骤 |
 ## 可复用模式
 
 > 详细内容见 [reusable-patterns.md](./reusable-patterns.md)
@@ -46,6 +55,7 @@
 - AI 会话中断后恢复
 
 ---
+---
 
 ### 模式 2: 规格先行
 
@@ -58,6 +68,7 @@
 - 所有新功能开发
 - Bug 修复（需要 mini-proposal）
 
+---
 ---
 
 ### 模式 3: Dogfooding 验证模式
@@ -73,9 +84,11 @@
 - 验证命令/skill 的实际执行效果
 
 ---
+---
 
 ### 模式 4: 文档拆分模式
 
+---
 ---
 
 ### 模式 5: 模板内嵌规则模式
@@ -91,6 +104,7 @@
 - 新用户/AI 需要快速上手
 
 ---
+---
 
 ### 模式 6: 向后兼容验证模式
 
@@ -105,6 +119,7 @@
 - 需确保不破坏现有工作流
 
 ---
+---
 
 ## 常见问题
 
@@ -118,6 +133,7 @@
 3. 根据"下一步动作"继续执行
 
 ---
+---
 
 ### 问题 2: Spec 与实现不一致怎么办？
 
@@ -127,6 +143,7 @@
 3. 获得用户确认
 4. 继续实现
 
+---
 ---
 
 ### 问题 3: skill 工具无法调用自定义 skill
@@ -141,6 +158,7 @@ OpenCode skill 工具只支持内置 skill，无法调用项目自定义的 feat
 - 长期方案：在项目层面解决或等待 OpenCode 支持
 
 ---
+---
 
 ### 问题 4: 知识文件缺失
 
@@ -152,6 +170,7 @@ docs/knowledge/ 目录下 reusable-patterns.md, common-failures.md, decision-his
 **解决方案**:
 在下一个 feature 中创建这些文件。
 
+---
 ---
 
 ## 决策历史
@@ -167,15 +186,23 @@ docs/knowledge/ 目录下 reusable-patterns.md, common-failures.md, decision-his
 | 2026-04-11 | 状态同步规则嵌入模板 | AI 读取模板时自动获取规则，减少查找成本 |
 
 ---
+---
 
 ## 更新记录
 
 | 日期 | Feature | 更新内容 |
 |------|---------|----------|
 | 2026-04-09 | 001-governance-foundation | 初始化知识索引 |
+| 2026-04-09 | 001-governance-foundation | 初始化知识索引 |
+| 2026-04-10 | 002-workflow-dogfooding | 添加 2 个可复用模式、2 个常见问题、2 条决策记录 |
 | 2026-04-10 | 002-workflow-dogfooding | 添加 2 个可复用模式、2 个常见问题、2 条决策记录 |
 | 2026-04-10 | 003-feature-hardening | 创建知识分类文件，添加状态文件关系规范 |
+| 2026-04-10 | 003-feature-hardening | 创建知识分类文件，添加状态文件关系规范 |
+| 2026-04-11 | 005-template-refinement | 添加 2 个可复用模式、1 条决策记录 |
 | 2026-04-11 | 005-template-refinement | 添加 2 个可复用模式、1 条决策记录 |
 | 2026-04-11 | md-meta-extractor 验证 | 添加框架应用报告、2 个新模式、1 条决策记录 |
+| 2026-04-11 | md-meta-extractor 验证 | 添加框架应用报告、2 个新模式、1 条决策记录 |
 | 2026-04-11 | 框架改进 | 添加决策固化流程、新项目模板、2 条决策记录 |
+| 2026-04-11 | 框架改进 | 添加决策固化流程、新项目模板、2 条决策记录 |
+| 2026-04-11 | 006-ai-context-injection | 添加 AI 平台入口文件、2 个新模式、2 条决策记录 |
 | 2026-04-11 | 006-ai-context-injection | 添加 AI 平台入口文件、2 个新模式、2 条决策记录 |
