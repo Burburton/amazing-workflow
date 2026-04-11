@@ -2,7 +2,7 @@
 
 ## 元信息
 
-- **Feature ID**: 008-test-archive
+- **Feature ID**: 008-test-archive-v2
 - **更新日期**: 2026-04-11
 - **更新者**: AI (Sisyphus)
 - **当前阶段**: archived
@@ -26,9 +26,16 @@
 
 | 日期 | 阶段变更 | 备注 |
 |------|----------|------|
-
-| 日期 | 阶段变更 | 备注 |
-|------|----------|------|
 | 2026-04-11 | idea → proposed | feature 初始化 |
 | 2026-04-11 | proposed → completed | 测试完成 |
-| 2026-04-11 | completed → archived | 移动到 openspec/archive/008-test-archive/ |
+
+---
+
+| 2026-04-11 | completed → archived | 移动到 openspec/archive/008-test-archive-v2/ |
+
+---
+
+## 审批
+
+- [x] Runstate 已更新
+- [x] 状态与 tasks.md 一致

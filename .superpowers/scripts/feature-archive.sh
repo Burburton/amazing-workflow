@@ -177,34 +177,27 @@ if [ -f "$RUNSTATE_FILE" ]; then
         print "| 下一步动作 | - |"
         next
     }
-    /^## 变更历史/ {
-        in_history=1
-        print
+    /^## 最后验证时间/ {
+        print "## 最后验证时间"
         print ""
-        print "| 日期 | 阶段变更 | 备注 |"
-        print "|------|----------|------|"
+        print "- **日期**: " date
+        print "- **结果**: 脚本执行成功，归档完成"
+        print ""
+        print "---"
         next
     }
-    in_history && /^\| [0-9]{4}-[0-9]{2}-[0-9]{2} \|/ {
-        history_lines[++n] = $0
-        next
-    }
-    in_history && /^## / && !/^## 变更历史/ {
-        for (i=1; i<=n; i++) print history_lines[i]
-        print "| " date " | completed → archived | 移动到 openspec/archive/" id "/ |"
-        in_history=0
-        n=0
+    /^## 审批/ {
+        if (!added_history) {
+            print "| " date " | completed → archived | 移动到 openspec/archive/" id "/ |"
+            added_history=1
+        }
+        print ""
+        print "---"
         print ""
         print $0
         next
     }
     { print }
-    END {
-        if (in_history && n>0) {
-            for (i=1; i<=n; i++) print history_lines[i]
-            print "| " date " | completed → archived | 移动到 openspec/archive/" id "/ |"
-        }
-    }
     ' "$RUNSTATE_FILE" > "${RUNSTATE_FILE}.tmp" && mv "${RUNSTATE_FILE}.tmp" "$RUNSTATE_FILE"
     
     echo -e "${GREEN}✓ runstate.md 更新成功 (状态: archived)${NC}"
@@ -221,61 +214,20 @@ KNOWLEDGE_INDEX="docs/knowledge/knowledge-index.md"
 
 if [ -f "$KNOWLEDGE_INDEX" ]; then
     awk -v id="$FEATURE_ID" -v title="$FEATURE_TITLE" -v date="$DATE" -v contribution="$FEATURE_CONTRIBUTION" '
-    /^## Feature 索引/ { 
-        in_feature=1
-        print
-        print ""
-        print "| Feature ID | 名称 | 状态 | 完成日期 | 主要贡献 |"
-        print "|------------|------|------|----------|----------|"
-        next
-    }
-    in_feature && /^\| 00[0-9]-/ {
-        feature_lines[++fn] = $0
-        next
-    }
-    in_feature && /^## / && !/^## Feature 索引/ {
-        for (i=1; i<=fn; i++) print feature_lines[i]
+    /^## Feature 索引/ { in_feature=1 }
+    in_feature && /^---$/ {
         print "| " id " | " title " | archived | " date " | " contribution " |"
+        print ""
         in_feature=0
-        fn=0
-        print ""
-        print "---"
-        print ""
-        print $0
-        next
     }
-    /^## 更新记录/ {
-        in_update=1
-        print
-        print ""
-        print "| 日期 | Feature | 更新内容 |"
-        print "|------|---------|----------|"
-        next
-    }
-    in_update && /^\| [0-9]{4}-[0-9]{2}-[0-9]{2}/ {
-        update_lines[++un] = $0
-        next
-    }
-    in_update && /^## / && !/^## 更新记录/ {
-        for (i=1; i<=un; i++) print update_lines[i]
+    /^## 更新记录/ { in_update=1 }
+    in_update && /^---$/ && !added_update {
         print "| " date " | " id " | 归档完成 |"
-        in_update=0
-        un=0
         print ""
-        print $0
-        next
+        added_update=1
+        in_update=0
     }
     { print }
-    END {
-        if (in_feature && fn>0) {
-            for (i=1; i<=fn; i++) print feature_lines[i]
-            print "| " id " | " title " | archived | " date " | " contribution " |"
-        }
-        if (in_update && un>0) {
-            for (i=1; i<=un; i++) print update_lines[i]
-            print "| " date " | " id " | 归档完成 |"
-        }
-    }
     ' "$KNOWLEDGE_INDEX" > "${KNOWLEDGE_INDEX}.tmp" && mv "${KNOWLEDGE_INDEX}.tmp" "$KNOWLEDGE_INDEX"
     
     echo -e "${GREEN}✓ knowledge-index.md 更新成功${NC}"
