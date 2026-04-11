@@ -13,6 +13,7 @@
 | [common-failures.md](./common-failures.md) | 常见问题 | 典型问题及解决方案 |
 | [decision-history.md](./decision-history.md) | 决策历史 | 重要决策及其理由 |
 | [framework-application-report.md](./framework-application-report.md) | 框架应用报告 | md-meta-extractor 项目验证报告 |
+| [ai-platform-adaptation.md](../guides/ai-platform-adaptation.md) | AI 平台适配指南 | 不同平台加载方式 |
 
 ---
 
@@ -176,3 +177,4 @@ docs/knowledge/ 目录下 reusable-patterns.md, common-failures.md, decision-his
 | 2026-04-11 | 005-template-refinement | 添加 2 个可复用模式、1 条决策记录 |
 | 2026-04-11 | md-meta-extractor 验证 | 添加框架应用报告、2 个新模式、1 条决策记录 |
 | 2026-04-11 | 框架改进 | 添加决策固化流程、新项目模板、2 条决策记录 |
+| 2026-04-11 | 006-ai-context-injection | 添加 AI 平台入口文件、2 个新模式、2 条决策记录 |

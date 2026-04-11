@@ -1,5 +1,31 @@
 # AGENTS.md - AI 项目入口
 
+> **TL;DR**: OpenSpec + Superpowers 治理框架。规格先行，状态可续，知识沉淀。Feature 生命周期从 proposal 到 archive。
+
+---
+
+## 快速导航
+
+| 目标 | 跳转 |
+|------|------|
+| 核心规则 | Section 4 |
+| Feature 生命周期 | Section 3 |
+| 必读文件 | Section 5 |
+| 目录结构 | Section 2 |
+| 快速开始 | Section 7 |
+
+---
+
+## 平台入口
+
+| AI 平台 | 入口文件 |
+|---------|----------|
+| Claude Code | CLAUDE.md |
+| Gemini CLI | GEMINI.md |
+| 其他平台 | AGENTS.md（当前） |
+
+---
+
 ## 1. 项目概述
 
 **项目名称**: Amazing Workflow
