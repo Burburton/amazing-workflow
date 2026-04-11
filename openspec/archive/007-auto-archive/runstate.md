@@ -42,12 +42,12 @@
 
 | 字段 | 值 |
 |------|-----|
-| archived ||| archived ||| archived ||| archived |
-| 已完成 | Task 1-5 (脚本增强完成) |
+| 当前阶段 | archived |
+| 已完成 | Task 1-6 (全部完成) |
 | 进行中 | - |
-| - ||| - ||| - ||| - |
+| 待处理 | - |
 | 阻塞点 | - |
-| - ||| - ||| - ||| - |
+| 下一步动作 | - |
 
 ---
 
@@ -67,12 +67,11 @@
 
 ## 重要文件
 
-<!-- 记录本次 feature 关键文件路径 -->
-
-- `openspec/changes/007-auto-archive/proposal.md`
-- `openspec/changes/007-auto-archive/specs/archive/spec.md`
-- `openspec/changes/007-auto-archive/tasks.md`
-- `openspec/changes/007-auto-archive/runstate.md`
+- `openspec/archive/007-auto-archive/proposal.md`
+- `openspec/archive/007-auto-archive/specs/archive/spec.md`
+- `openspec/archive/007-auto-archive/tasks.md`
+- `openspec/archive/007-auto-archive/runstate.md`
+- `.superpowers/scripts/feature-archive.sh`
 
 ---
 
@@ -85,20 +84,20 @@
 | 2026-04-11 | specified → planned | tasks.md 拆解完成 |
 | 2026-04-11 | planned → implementing | 开始执行 Task 2 |
 | 2026-04-11 | implementing → completed | Task 1-5 完成，脚本增强完成 |
+| 2026-04-11 | completed → archived | 移动到 openspec/archive/007-auto-archive/ |
 
 ---
 
-| 2026-04-11 | completed → archived | 移动到 openspec/archive/007-auto-archive/ |
 ## 最后验证时间
 
-<!-- 记录上次验证的时间戳 -->
-
-- 暂无验证记录
+- **日期**: 2026-04-11
+- **结果**: 脚本成功执行所有 8 步，Dogfooding 验证通过
+- **方式**: 使用脚本归档自身
 
 ---
 
 ## 审批
 
-- [ ] Runstate 已更新
-- [ ] 状态与 tasks.md 一致
-- [ ] 下一步动作明确
+- [x] Runstate 已更新
+- [x] 状态与 tasks.md 一致
+- [x] 下一步动作明确
