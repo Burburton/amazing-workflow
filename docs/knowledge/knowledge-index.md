@@ -175,3 +175,4 @@ docs/knowledge/ 目录下 reusable-patterns.md, common-failures.md, decision-his
 | 2026-04-10 | 003-feature-hardening | 创建知识分类文件，添加状态文件关系规范 |
 | 2026-04-11 | 005-template-refinement | 添加 2 个可复用模式、1 条决策记录 |
 | 2026-04-11 | md-meta-extractor 验证 | 添加框架应用报告、2 个新模式、1 条决策记录 |
+| 2026-04-11 | 框架改进 | 添加决策固化流程、新项目模板、2 条决策记录 |

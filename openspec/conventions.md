@@ -52,6 +52,17 @@ NNN-semantic-name
 - 需求可验证
 - 场景具体化
 
+### 决策固化流程
+
+在 spec 填写过程中，如果发现模糊点，**禁止直接假设或猜测**。必须执行决策固化：
+
+1. **识别模糊点** - 标记多处可解释的描述
+2. **分析可选方案** - 列出至少 2-3 种实现方式
+3. **评估方案** - 从可用性、可扩展性、兼容性角度评估
+4. **选择最优方案** - 记录选择理由和放弃的替代方案
+5. **固化到 spec** - 更新 spec 文件，明确描述
+6. **记录决策** - 在 decision-history.md 中记录
+
 ---
 
 ## 3. Proposal 写法规范
@@ -169,6 +180,10 @@ NNN-semantic-name
 - `test-summary.template.md` - 测试总结
 - `lessons-learned.template.md` - 经验教训
 
+### 新项目模板（第三阶段）
+- `new-project.template.md` - 新项目初始化结构
+- `spec.template.md` - spec 规格（含决策固化）
+
 ---
 
 ## 9. 状态文件关系
@@ -234,3 +249,23 @@ NNN-semantic-name
 2. **runstate.md 是动态状态** - 记录"做到哪了"
 3. **分离关注点** - 规划和状态追踪分开，便于维护
 4. **支持续接** - runstate.md 提供会话恢复入口，tasks.md 提供执行细节
+
+---
+
+## 10. 新项目初始化
+
+### 快速启动
+
+创建新项目时，参考 `new-project.template.md` 快速复制框架结构：
+
+1. 复制模板文件到 `openspec/templates/`
+2. 创建 AGENTS.md、PROJECT_RULES.md、project.md
+3. 创建 `docs/knowledge/` 目录结构
+4. 初始化 git 仓库
+5. 开始第一个 feature（001-<name>）
+
+### 完整流程
+
+详见 `docs/workflows/feature-lifecycle.md` 的"新项目初始化指南"章节。
+
+---
