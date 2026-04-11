@@ -85,14 +85,16 @@
 | 2026-04-11 | planned → implementing | 开始执行 Task 2 |
 | 2026-04-11 | implementing → completed | Task 1-5 完成，脚本增强完成 |
 | 2026-04-11 | completed → archived | 移动到 openspec/archive/007-auto-archive/ |
+| 2026-04-11 | archived → archived | 修复 awk 逻辑，脚本改进完成 |
 
 ---
 
 ## 最后验证时间
 
 - **日期**: 2026-04-11
-- **结果**: 脚本成功执行所有 8 步，Dogfooding 验证通过
-- **方式**: 使用脚本归档自身
+- **结果**: 脚本成功执行所有 8 步，awk 逻辑修复验证通过
+- **方式**: 使用测试 feature 验证改进后的 awk 逻辑
+- **修复内容**: awk 正则避免使用 \| 字符（awk 中 \| 是"或"操作符）
 
 ---
 
@@ -100,4 +102,4 @@
 
 - [x] Runstate 已更新
 - [x] 状态与 tasks.md 一致
-- [x] 下一步动作明确
+- [x] awk 逻辑修复完成
