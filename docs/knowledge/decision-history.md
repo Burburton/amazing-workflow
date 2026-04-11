@@ -145,6 +145,31 @@
 
 ---
 
+### 决策 6: 模板改进后首次验证成功
+
+**日期**: 2026-04-11
+
+**来源**: md-meta-extractor 验证
+
+**决策内容**:
+005-template-refinement 改进后的模板在 md-meta-extractor 项目中首次验证成功。
+
+**理由**:
+- Feature 生命周期完整走通
+- 状态同步规则被正确执行
+- 知识沉淀产出有效内容
+
+**验证证据**:
+- 001-core-extraction 完成 proposed → completed
+- 8 个验收场景全部实现
+- 产出 2 个新模式 + 4 条决策
+
+**影响范围**:
+- 框架可信度提升
+- 可用于真实项目开发
+
+---
+
 ## 决策模板
 
 ```markdown
@@ -186,3 +211,4 @@
 | 2026-04-10 | 002-workflow-dogfooding | 新增决策 2-3 |
 | 2026-04-10 | 003-feature-hardening | 新增决策 4 |
 | 2026-04-11 | 005-template-refinement | 新增决策 5 |
+| 2026-04-11 | md-meta-extractor 验证 | 新增决策 6 |

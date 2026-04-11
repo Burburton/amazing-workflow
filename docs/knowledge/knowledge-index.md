@@ -12,6 +12,7 @@
 | [reusable-patterns.md](./reusable-patterns.md) | 可复用模式 | 验证过的实践模式 |
 | [common-failures.md](./common-failures.md) | 常见问题 | 典型问题及解决方案 |
 | [decision-history.md](./decision-history.md) | 决策历史 | 重要决策及其理由 |
+| [framework-application-report.md](./framework-application-report.md) | 框架应用报告 | md-meta-extractor 项目验证报告 |
 
 ---
 
@@ -173,3 +174,4 @@ docs/knowledge/ 目录下 reusable-patterns.md, common-failures.md, decision-his
 | 2026-04-10 | 002-workflow-dogfooding | 添加 2 个可复用模式、2 个常见问题、2 条决策记录 |
 | 2026-04-10 | 003-feature-hardening | 创建知识分类文件，添加状态文件关系规范 |
 | 2026-04-11 | 005-template-refinement | 添加 2 个可复用模式、1 条决策记录 |
+| 2026-04-11 | md-meta-extractor 验证 | 添加框架应用报告、2 个新模式、1 条决策记录 |
